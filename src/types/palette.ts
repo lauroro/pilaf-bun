@@ -5,7 +5,9 @@ import type { Base16Key } from "./base16-key"
 
 export type HexColor = string
 
+export type PaletteColors = Record<Base16Key, HexColor>
+
 export type Palette = {
     name: string
-    colors: Record<Base16Key, HexColor>
+    colors: PaletteColors
 }
