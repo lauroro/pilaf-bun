@@ -1,10 +1,9 @@
 // SPDX-FileCopyrightText: 2026 roro
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+import { isHexColor } from "../../color/core/is-hex-color"
 import { BASE16_KEYS } from "../../types/base16-key"
 import type { Palette, HexColor } from "../../types/palette"
-
-const isValidHex = (value: string): boolean => /^#?[0-9A-Fa-f]{6}$/.test(value)
 
 /**
  * Check if a given base16 palette is:
@@ -21,7 +20,7 @@ export const validatePalette = (palette: Palette): boolean => {
     for (const key of BASE16_KEYS) {
         const color = palette.colors[key]
 
-        if (!isValidHex(color)) return false
+        if (!isHexColor(color)) return false
 
         if (seenColors.has(color)) return false
 

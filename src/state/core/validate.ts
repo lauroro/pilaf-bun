@@ -1,13 +1,9 @@
 // SPDX-FileCopyrightText: 2026 roro
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+import { isHexColor } from "../../color/core/is-hex-color"
 import { BASE16_KEYS } from "../../types/base16-key"
 import type { State } from "../../types/state"
-
-const HEX_COLOR_REGEX = /^[0-9a-fA-F]{6}$/
-
-const isHexColor = (value: unknown): value is string =>
-    typeof value === "string" && HEX_COLOR_REGEX.test(value)
 
 export const validateState = (value: unknown): value is State => {
     if (typeof value !== "object" || value === null) return false
