@@ -35,7 +35,7 @@ describe("buildReverseMap", () => {
         expect(map.get("d5c4a1")).toBe("base05")
     })
 
-    it("has case insensitive input", () => {
+    it("normalizes colors to lowercase", () => {
         const upperPalette: Palette = {
             ...palette,
             colors: {
