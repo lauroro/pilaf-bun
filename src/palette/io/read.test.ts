@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test"
-import { PATHS } from "../../config/paths"
+import { PATHS } from "../../env/paths"
 import { readPalette } from "./read"
 
 const bunFileMock = mock()

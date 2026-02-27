@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import { describe, expect, it, mock, beforeEach, afterEach } from "bun:test"
-import { PATHS } from "../../config/paths"
+import { PATHS } from "../../env/paths"
 import type { State } from "../../types/state"
 import { readState } from "./read"
 

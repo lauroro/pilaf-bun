@@ -4,7 +4,7 @@
 import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test"
 import type { State } from "../../types/state"
 import { writeState } from "./write"
-import { PATHS } from "../../config/paths"
+import { PATHS } from "../../env/paths"
 
 const state: State = {
     currentPalette: {
