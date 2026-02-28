@@ -7,7 +7,7 @@ import type { Palette } from "../../types/palette"
 /**
  * Replace colors inside blocks using palette mapping
  */
-export const replaceBlockColors = (
+export const transformBlocks = (
     blocks: Block[],
     oldPalette: Palette,
     newPalette: Palette
