@@ -1,12 +1,5 @@
 {
     "name": "pilaf",
-    "private": true,
-    "type": "module",
-    "license": "GPL-3.0-or-later",
-    "scripts": {
-        "build": "bun build src/main.ts --compile --outfile pilaf",
-        "prepare": "husky install"
-    },
     "devDependencies": {
         "@types/bun": "latest",
         "@types/yaml": "^1.9.7",
@@ -15,7 +8,11 @@
     "peerDependencies": {
         "typescript": "^5"
     },
-    "dependencies": {
-        "yaml": "^2.8.2"
-    }
+    "license": "GPL-3.0-or-later",
+    "private": true,
+    "scripts": {
+        "build": "bun build src/main.ts --compile --outfile pilaf",
+        "prepare": "husky install"
+    },
+    "type": "module"
 }
