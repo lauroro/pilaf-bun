@@ -3,5 +3,5 @@
 
 export type Config = {
     targets: string[]
-    commands: string[]
+    commands?: string[]
 }

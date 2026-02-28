@@ -17,6 +17,6 @@ describe("parseConfig", () => {
     it("parses YAML", () => {
         const config = parseConfig(configYaml)
         expect(config.targets.length).toBe(2)
-        expect(config.commands.length).toBe(2)
+        expect(config.commands!.length).toBe(2)
     })
 })
