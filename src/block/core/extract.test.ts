@@ -23,8 +23,7 @@ describe("extractBlocks", () => {
         expect(blocks[0]).toEqual({
             start: 1,
             end: 4,
-            content: `
-@pilaf:start
+            content: `@pilaf:start
 color = #111111
 color2 = #222222
 @pilaf:end`,
@@ -32,8 +31,7 @@ color2 = #222222
         expect(blocks[1]).toEqual({
             start: 6,
             end: 8,
-            content: `
-@pilaf:start
+            content: `@pilaf:start
 color = #333333
 @pilaf:end`,
         })
