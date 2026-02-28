@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import { describe, it, expect } from "bun:test"
-import { rebuildFile } from "./rebuild"
 import type { Block } from "../../types/block"
+import { rebuildFile } from "./rebuild"
 
 const file = `
 line 0
