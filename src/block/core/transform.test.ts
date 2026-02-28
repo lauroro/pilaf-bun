@@ -47,6 +47,12 @@ describe("transformBlocks", () => {
 @pilaf:start
 color = #000000
 @pilaf:end
+@pilaf:start
+color = 000000
+@pilaf:end
+@pilaf:start
+color = 000000ff
+@pilaf:end
 `.trim(),
             },
         ]
@@ -54,6 +60,8 @@ color = #000000
         const result = transformBlocks(blocks, oldPalette, newPalette)
 
         expect(result[0]!.content).toContain("#abcdef")
+        expect(result[1]!.content).toContain("abcdef")
+        expect(result[2]!.content).toContain("abcdefff")
     })
 
     it("does not replace unknown colors", () => {
