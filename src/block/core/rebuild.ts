@@ -10,5 +10,20 @@ export const rebuildFile = (
     originalContent: string,
     blocks: Block[]
 ): string => {
-    return ""
+    const lines = originalContent.split(/\r?\n/)
+    const newLines = [...lines]
+
+    // process from bottom to top to avoid that splices break indexes
+    const sorted = [...blocks].sort((a, b) => b.start - a.start)
+
+    for (const block of sorted) {
+        const replacement = block.content.split("\n")
+        newLines.splice(
+            block.start,
+            block.end - block.start + 1,
+            ...replacement
+        )
+    }
+
+    return newLines.join("\n")
 }
