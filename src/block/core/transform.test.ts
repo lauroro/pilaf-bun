@@ -47,11 +47,32 @@ describe("transformBlocks", () => {
 @pilaf:start
 color = #000000
 @pilaf:end
+`.trim(),
+            },
+            {
+                start: 3,
+                end: 5,
+                content: `
 @pilaf:start
 color = 000000
 @pilaf:end
+`.trim(),
+            },
+            {
+                start: 6,
+                end: 8,
+                content: `
 @pilaf:start
 color = 000000ff
+@pilaf:end
+`.trim(),
+            },
+            {
+                start: 9,
+                end: 11,
+                content: `
+@pilaf:start
+color = 0x000000
 @pilaf:end
 `.trim(),
             },
@@ -62,6 +83,7 @@ color = 000000ff
         expect(result[0]!.content).toContain("#abcdef")
         expect(result[1]!.content).toContain("abcdef")
         expect(result[2]!.content).toContain("abcdefff")
+        expect(result[3]!.content).toContain("0xabcdef")
     })
 
     it("does not replace unknown colors", () => {
