@@ -4,7 +4,7 @@
 import type { State } from "../../types/state"
 
 /**
- * Transform a state file content in a palette object.
+ * Transform a state file content in a state object.
  */
 export const parseState = (content: string): State => {
     const parsed = JSON.parse(content) as State
