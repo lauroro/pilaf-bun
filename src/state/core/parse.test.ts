@@ -3,7 +3,6 @@
 
 import { describe, it, expect } from "bun:test"
 import { parseState } from "./parse"
-import type { Palette } from "../../types/palette"
 import type { State } from "../../types/state"
 
 const state: State = {
