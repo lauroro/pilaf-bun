@@ -8,5 +8,8 @@ import type { State } from "../../types/state"
  * Create a State object
  */
 export const createState = (palette: Palette): State => {
-    return {} as State
+    return {
+        currentPalette: palette,
+        createdAt: new Date().toISOString(),
+    }
 }
