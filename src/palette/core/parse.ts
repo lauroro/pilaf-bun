@@ -3,19 +3,11 @@
 
 import { YAML } from "bun"
 import { BASE16_KEYS } from "../../types/base16-key"
-import type { Palette, PaletteColors } from "../../types/palette"
+import type { PaletteColors } from "../../types/palette"
 
 /**
- * Transform a palette name and file content in a palette object.
+ * Parse colors from a palette content
  */
-export const parsePalette = (name: string, content: string): Palette => {
-    const parsedContent = YAML.parse(content) as PaletteColors
-    const colors = {} as PaletteColors
-    for (const key of BASE16_KEYS) {
-        colors[key] = parsedContent[key]
-    }
-    return {
-        name,
-        colors,
-    }
+export const parseColors = (content: string): PaletteColors => {
+    return {} as PaletteColors
 }
