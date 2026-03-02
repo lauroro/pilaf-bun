@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 roro
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import { isHexColor } from "../../color/core/is-hex-color"
+import { isHexColor } from "../../utils/is-hex-color"
 import { BASE16_KEYS } from "../../types/base16-key"
 import type { Palette } from "../../types/palette"
 
