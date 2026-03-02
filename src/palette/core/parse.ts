@@ -9,5 +9,10 @@ import type { PaletteColors } from "../../types/palette"
  * Parse colors from a palette content
  */
 export const parseColors = (content: string): PaletteColors => {
-    return {} as PaletteColors
+    const parsedContent = YAML.parse(content) as PaletteColors
+    const colors = {} as PaletteColors
+    for (const key of BASE16_KEYS) {
+        colors[key] = parsedContent[key]
+    }
+    return colors
 }
