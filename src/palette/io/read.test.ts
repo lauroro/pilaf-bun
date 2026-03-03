@@ -18,7 +18,7 @@ afterEach(() => {
     bunFileMock.mockReset()
 })
 
-describe("loadPalette", () => {
+describe("readPalette", () => {
     it("loads correct palette file path", async () => {
         bunFileMock.mockReturnValue({
             text: mock().mockResolvedValue("palette yaml"),
