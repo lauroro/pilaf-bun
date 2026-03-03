@@ -3,9 +3,10 @@
 
 import { describe, it, expect, mock } from "bun:test"
 import { loadConfig } from "./load"
+import { env } from "bun"
 
 describe("loadConfig", () => {
-    it("reads, parses, normalizes and validates a valid config", async () => {
+    it("reads, parses, validates and normalizes a config", async () => {
         mock.module("../io/read", () => ({
             readConfig: async () => `
 targets:
@@ -18,7 +19,10 @@ commands:
 
         const config = await loadConfig()
 
-        expect(config.targets).toEqual(["~/.config/file1", "~/.config/file2"])
+        expect(config.targets).toEqual([
+            `${env.HOME}/.config/file1`,
+            `${env.HOME}/.config/file2`,
+        ])
         expect(config.commands).toEqual(["echo done"])
     })
 
@@ -32,7 +36,7 @@ targets:
 
         const config = await loadConfig()
 
-        expect(config.targets).toEqual(["~/.config/file1"])
+        expect(config.targets).toEqual([`${env.HOME}/.config/file1`])
         expect(config.commands).toBeUndefined()
     })
 
