@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: 2026 roro
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import { readConfig } from "../io/read"
-import { parseConfig } from "./parse"
-import { normalizeConfig } from "./normalize"
-import { validateConfig } from "./validate"
 import type { Config } from "../../types/config"
 import { asyncPipe } from "../../utils/async-pipe"
+import { normalizeConfig } from "../core/normalize"
+import { parseConfig } from "../core/parse"
+import { validateConfig } from "../core/validate"
+import { readConfig } from "../io/read"
 
 /**
  * Read, parse, validate and normalize configuration.
