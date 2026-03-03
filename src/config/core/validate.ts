@@ -6,16 +6,22 @@ import type { Config } from "../../types/config"
 /**
  * Check if a value is a valid pilaf config
  */
-export const validateConfig = (value: unknown): value is Config => {
-    if (typeof value !== "object" || value === null) return false
+export const validateConfig = (value: unknown): Config => {
+    try {
+        if (typeof value !== "object" || value === null) throw new Error()
 
-    const config = value as Record<string, unknown>
+        const config = value as Record<string, unknown>
 
-    if (!Array.isArray(config.targets)) return false
-    if (!Array.isArray(config.commands)) return false
+        if (!Array.isArray(config.targets)) throw new Error()
+        if (!Array.isArray(config.commands)) throw new Error()
 
-    if (!config.targets.every((v) => typeof v === "string")) return false
-    if (!config.commands.every((v) => typeof v === "string")) return false
+        if (!config.targets.every((v) => typeof v === "string"))
+            throw new Error()
+        if (!config.commands.every((v) => typeof v === "string"))
+            throw new Error()
 
-    return true
+        return value as Config
+    } catch (err) {
+        throw new Error("invalid config")
+    }
 }
