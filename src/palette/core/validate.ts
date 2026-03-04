@@ -6,30 +6,32 @@ import { BASE16_KEYS } from "../../types/base16-key"
 import type { Palette } from "../../types/palette"
 
 /**
- * Check if a given value is a valid base16 Palette
+ * Validate and return a Palette.
+ * Throws if invalid.
  */
-export const validatePalette = (value: unknown): value is Palette => {
-    if (typeof value !== "object" || value === null) return false
+export const validatePalette = (value: unknown): Palette => {
+    if (typeof value !== "object" || value === null)
+        throw new Error("invalid palette")
 
     const palette = value as Record<string, unknown>
 
-    if (typeof palette.name !== "string") return false
+    if (typeof palette.name !== "string") throw new Error("invalid palette")
 
     if (typeof palette.colors !== "object" || palette.colors === null)
-        return false
+        throw new Error("invalid palette")
 
     const colors = palette.colors as Record<string, unknown>
 
     for (const key of BASE16_KEYS) {
-        if (!isHexColor(colors[key])) return false
+        if (!isHexColor(colors[key])) throw new Error("invalid palette")
     }
 
     const seen = new Set<string>()
     for (const key of BASE16_KEYS) {
         const color = colors[key] as string
-        if (seen.has(color)) return false
+        if (seen.has(color)) throw new Error("invalid palette")
         seen.add(color)
     }
 
-    return true
+    return value as Palette
 }
