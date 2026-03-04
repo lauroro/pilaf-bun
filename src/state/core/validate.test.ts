@@ -31,20 +31,20 @@ const validState: State = {
 }
 
 describe("validateState", () => {
-    it("returns true for valid state", () => {
-        expect(validateState(validState)).toBe(true)
+    it("returns validated state", () => {
+        expect(validateState(validState)).toBe(validState)
     })
 
-    it("returns false for null", () => {
-        expect(validateState(null)).toBe(false)
+    it("throws for null", () => {
+        expect(() => validateState(null)).toThrow("invalid state")
     })
 
-    it("returns false if createdAt is invalid", () => {
+    it("throws if createdAt is invalid", () => {
         const invalid = { ...validState, createdAt: "not-a-date" }
-        expect(validateState(invalid)).toBe(false)
+        expect(() => validateState(invalid)).toThrow("invalid state")
     })
 
-    it("returns false if palette name is missing", () => {
+    it("throws if palette name is missing", () => {
         const invalid = {
             ...validState,
             currentPalette: {
@@ -52,10 +52,10 @@ describe("validateState", () => {
                 name: 123,
             },
         }
-        expect(validateState(invalid)).toBe(false)
+        expect(() => validateState(invalid)).toThrow("invalid state")
     })
 
-    it("returns false if a base16 color is missing", () => {
+    it("throws if a base16 color is missing", () => {
         const invalid = {
             ...validState,
             currentPalette: {
@@ -66,10 +66,10 @@ describe("validateState", () => {
                 },
             },
         }
-        expect(validateState(invalid)).toBe(false)
+        expect(() => validateState(invalid)).toThrow("invalid state")
     })
 
-    it("returns false if a color is not valid hex", () => {
+    it("throws if a color is not valid hex", () => {
         const invalid = {
             ...validState,
             currentPalette: {
@@ -81,10 +81,10 @@ describe("validateState", () => {
             },
         }
 
-        expect(validateState(invalid)).toBe(false)
+        expect(() => validateState(invalid)).toThrow("invalid state")
     })
 
-    it("returns false if color contains #", () => {
+    it("throws if color contains #", () => {
         const invalid = {
             ...validState,
             currentPalette: {
@@ -96,10 +96,10 @@ describe("validateState", () => {
             },
         }
 
-        expect(validateState(invalid)).toBe(false)
+        expect(() => validateState(invalid)).toThrow("invalid state")
     })
 
-    it("returns false if color length is wrong", () => {
+    it("throws if color length is wrong", () => {
         const invalid = {
             ...validState,
             currentPalette: {
@@ -111,6 +111,6 @@ describe("validateState", () => {
             },
         }
 
-        expect(validateState(invalid)).toBe(false)
+        expect(() => validateState(invalid)).toThrow("invalid state")
     })
 })
