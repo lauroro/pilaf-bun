@@ -95,18 +95,24 @@ const invalidHexPalette: Palette = {
 
 describe("validatePalette", () => {
     it("valid palette passes", () => {
-        expect(validatePalette(validPalette)).toBe(true)
+        expect(validatePalette(validPalette)).toBe(validPalette)
     })
 
     it("palette missing a base fails", () => {
-        expect(validatePalette(missingBasePalette)).toBe(false)
+        expect(() => validatePalette(missingBasePalette)).toThrow(
+            "invalid palette"
+        )
     })
 
     it("palette with duplicate colors fails", () => {
-        expect(validatePalette(duplicatePalette)).toBe(false)
+        expect(() => validatePalette(duplicatePalette)).toThrow(
+            "invalid palette"
+        )
     })
 
     it("palette with invalid hex fails", () => {
-        expect(validatePalette(invalidHexPalette)).toBe(false)
+        expect(() => validatePalette(invalidHexPalette)).toThrow(
+            "invalid palette"
+        )
     })
 })
